@@ -1,5 +1,9 @@
       SUBROUTINE RKGS(PRMT,Y,DERY,NDIM,IHLF,AUX)
-      real y, dery, aux, a, b, c, prmt
+
+!     External variables should also be declared.
+!     Otherwise those var may have strange values!
+      double precision y, dery, aux, a, b, c, prmt, x
+!     Below is unchanged.
       DIMENSION Y(*),DERY(*),AUX(8,*),A(4),B(4),C(4),PRMT(8)
       DO 1 I=1,NDIM
     1 AUX(8,I)=.06666667*DERY(I)
