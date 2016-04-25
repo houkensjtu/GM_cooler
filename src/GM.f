@@ -1,11 +1,12 @@
 	PROGRAM GMA
 C-----------------------------------------
 c
-	IMPLICIT REAL*8 (A-H,O-Z)
-	DIMENSION Y(3),DERY(3),AOX(8,3),PRMT(8),XX(8),CV(3),D(8,6000)
-        COMMON /P/ TH,TRH,TRE,TE,R,P1,P2,PH,PL,XX,CV,D,J
-	COMMON /C/ VT,VRH,VRE,C1,C2,CV10,CV20,PHAI,V1,V2,OMEGA,F,MODE
-	common xt
+	use data
+	implicit none
+	double precision y, dery, prmt, aux, x
+	DIMENSION Y(3),DERY(3),AUX(8,3),PRMT(8)
+	integer ndim, ihlf
+
 	OPEN(8,FILE='GMout.txt')
 	OPEN(9,FILE='GM.txt')
 	OPEN(3,FILE='IN.TXT')
@@ -53,7 +54,7 @@ C--- R=2.077,(for He [MPa,cm3/g/K] ---
 	NDIM=3
 C	 
 C      CALL RKGS(PRMT,Y,DERY,NDIM,IHLF,AOX)
-       CALL rkgs(PRMT,Y,DERY,NDIM,IHLF,AOX)
+       CALL rkgs(PRMT,Y,DERY,NDIM,IHLF,aux)
 	JJ=J
 	WRITE(9,101)'Deg.',' Ve',' P1',' P2',' dmr/dt',' dm1/dt',' dm2/dt'
      + ,' Cv1',' Cv2',' P1-P2'
@@ -141,11 +142,11 @@ C	JD=100
 	END
 C----------------------------------
       SUBROUTINE FCT(X,Y,DERY)
-	IMPLICIT REAL*8 (A-H,O-Z)
-	DIMENSION Y(3),DERY(3),AOX(8,3),PRMT(8),XX(8),CV(3),D(8,6000)
-        COMMON /P/ TH,TRH,TRE,TE,R,P1,P2,PH,PL,XX,CV,D,J
-	COMMON /C/ VT,VRH,VRE,C1,C2,CV10,CV20,PHAI,V1,V2,OMEGA,F,MODE
-	common xt
+	use data
+	implicit none
+	double precision x, y, dery
+	dimension y(3), dery(3)
+
 	V2=0.5*VT*(1.0-COS(OMEGA*X-PHAI))
 	V1=VT-V2
 	P1=(C1+Y(1)-Y(2)-Y(3))*R/(VRH/TRH+V1/TH)
@@ -164,12 +165,11 @@ c	DERY(3)=CV(3)*(P1*P1-P2*P2)
       END
 C-----------------------------------
       SUBROUTINE OUTP(X,Y,DERY,IHLF,NDIM,PRMT)
-	IMPLICIT REAL*8 (A-H,O-Z)
-        integer nx, nf
-	DIMENSION Y(3),DERY(3),AOX(8,3),PRMT(8),XX(8),CV(3),D(8,6000)
-        COMMON /P/ TH,TRH,TRE,TE,R,P1,P2,PH,PL,XX,CV,D,J
-	COMMON /C/ VT,VRH,VRE,C1,C2,CV10,CV20,PHAI,V1,V2,OMEGA,F,MODE
-	common xt
+	use data
+	implicit none
+	double precision x, y, dery, prmt
+	dimension y(3), dery(3), prmt(8)
+	integer ihlf, ndim
 	IF(X.EQ.0.) THEN
 	PI=3.141592
 	J=0
@@ -267,14 +267,16 @@ C---------------------
 	RETURN
 	END
 
-
-
+	
       SUBROUTINE RKGS(PRMT,Y,DERY,NDIM,IHLF,AUX)
 C
 C
-      IMPLICIT REAL*8 (A-H,O-Z)
-      DIMENSION Y(*),DERY(*),AUX(8,*),A(4),B(4),C(4),PRMT(8)
-      external FCT
+      implicit none
+      double precision a, b, c, xend, h, aj, bj, cj, r1, r2, delt
+      integer irec, istep, itest, imod, iend, i, j, ndim, ihlf
+      double precision y, dery, aux, prmt, x
+      DIMENSION Y(3),DERY(3),AUX(8,3),A(4),B(4),C(4),PRMT(8)
+
       DO 1 I=1,NDIM
     1 AUX(8,I)=.06666667*DERY(I)
       X=PRMT(1)
@@ -429,3 +431,4 @@ C     RETURNS TO CALLING PROGRAM
 C
 C=======================================================================
 C
+
