@@ -193,7 +193,7 @@ C	WRITE(*,*)N,X,VE0,VI0
 	XK3=0.
 	XK4=0.
 	ENDIF
-	  XT=XT+PRMT(3)
+	XT=XT+PRMT(3)
 C---------------
 	IF (XT.GE.XX(1) .AND. XT.LT.XX(2)) THEN
 	XK1=(XT-XX(1))/(XX(2)-XX(1))
@@ -250,8 +250,8 @@ C      ENDIF
 	CV(2)=0.
 	ENDIF
 C---------------------
-C	IF(X.GE.PRMT(7)) THEN
-	IF(X.ge.0.0) THEN
+	IF(X.GE.PRMT(7)) THEN
+C	IF(X.ge.0.0) THEN
 C------------------------------------
         J=J+1
 	D(1,J)=V2
@@ -271,6 +271,7 @@ C---------------------
       SUBROUTINE RKGS(PRMT,Y,DERY,NDIM,IHLF,AUX)
 C
 C
+      use data, only:cv, d
       implicit none
       double precision a, b, c, xend, h, aj, bj, cj, r1, r2, delt
       integer irec, istep, itest, imod, iend, i, j, ndim, ihlf
