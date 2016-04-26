@@ -65,7 +65,10 @@
 
 	CALL RKGS(PRMT,Y,DERY,NDIM,IHLF,AUX)
 	JJ=J
-	WRITE(9,101)'Deg.',' Ve',' P1',' P2',' dmr/dt',' dm1/dt',' dm2/dt',' Cv1',' Cv2',' P1-P2'
+!	Old F77 style line continuation.
+	WRITE(9,101)'Deg.','Ve','P1','P2','dmr/dt','dm1/dt','dm2/dt','Cv1'
+!	Note that the second line should start from behind the "WRITE".
+     +              ,'Cv2',' P1-P2'
 101	FORMAT(10A12)
 
 !       Below is the output part.
@@ -177,5 +180,6 @@ C--------------------------------------
 	END DO
 100	FORMAT(I12,9F12.3)
 	END PROGRAM
+
 
 
