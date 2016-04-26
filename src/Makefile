@@ -1,7 +1,9 @@
+FORTRAN = gfortran
+
 all: data
-	gfortran -free -g *.f -o GM_cryocooler.o
+	${FORTRAN} -g *.f -o GM_cryocooler.o
 data:
-	gfortran -free -c data.f
+	${FORTRAN} -c data.f
 clean:
 	rm -f *.o *.mod
 	rm -f GM.txt
