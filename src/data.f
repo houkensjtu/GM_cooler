@@ -20,6 +20,7 @@
 
       integer j, mode, jd, jj, k, i
       integer nx, nf, n
+      integer log_step
 
       dimension d(8,6000), xx(8), cv(3)
       double precision am0, amemax

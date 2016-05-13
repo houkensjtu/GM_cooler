@@ -12,7 +12,7 @@
 
       IF(X.EQ.0.) THEN
          PI=3.141592
-         J=0
+         log_step = 0
          N=1
          FF=1./F
          XT=0.
@@ -96,31 +96,30 @@ C     ENDIF
       ENDIF
 !-------------------------------------
       IF(X.GE.PRMT(7)) THEN
-         J=J+1
-         D(1,J)=V2
+         log_step = log_step + 1
+         D(1,log_step)=V2
 
 !        Pressure
-         D(2,J)=P1
+         D(2,log_step)=P1
 
 !        Pressure
-         D(3,J)=P2
+         D(3,log_step)=P2
 
 !        mass flow rate at regenerator
-         D(4,J)=DERY(3)
+         D(4,log_step)=DERY(3)
 
 !        mass flow rate at Valve1
-         D(5,J)=DERY(1)
+         D(5,log_step)=DERY(1)
 
 !         mass flow rate at Valve2
-         D(6,J)=DERY(2)
+         D(6,log_step)=DERY(2)
 
 !        Valve 1 opening
-         D(7,J)=CV(1)/21.2
+         D(7,log_step)=CV(1)/21.2
 
 !        Valve 2 opening
-         D(8,J)=CV(2)/21.2
+         D(8,log_step)=CV(2)/21.2
       ENDIF
 !-------------------------------------
       RETURN
       END SUBROUTINE
-

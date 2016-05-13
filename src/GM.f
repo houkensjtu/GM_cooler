@@ -64,7 +64,7 @@
 	NDIM=3
 
 	CALL RKGS(PRMT,Y,DERY,NDIM,IHLF,AUX)
-	JJ=J
+	JJ = log_step
 !	Old F77 style line continuation.
 	WRITE(9,101)'Deg.','Ve','P1','P2','dmr/dt','dm1/dt','dm2/dt','Cv1'
 !	Note that the second line should start from behind the "WRITE".
