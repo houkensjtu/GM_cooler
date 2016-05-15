@@ -95,6 +95,8 @@ C     ENDIF
          CV(2)=0.
       ENDIF
 !-------------------------------------
+!     Prmt(7) = Xend - 0.5*(Full cycle period)
+!     Means to output only the final cycle to GM.txt
       IF(X.GE.PRMT(7)) THEN
          log_step = log_step + 1
          D(1,log_step)=V2
