@@ -15,11 +15,12 @@
 !     prmt(2) is the end value of x.
 !     prmt(3) is the initial increment.
 !     prmt(4) is the upper error bound.
-!     The rest of prmt could be ommited.     
-      prmt(1) = 0.0
-      prmt(2) = 10.0
-      prmt(3) = 0.01
-      prmt(4) = 0.01
+!     The rest of prmt could be ommited.
+!     Add d0 following the number to avoid double precision error.
+      prmt(1) = 0.0d0
+      prmt(2) = 10.0d0
+      prmt(3) = 0.01d0
+      prmt(4) = 0.01d0
       
 !     Should not forget to set the initial value of y.
       y(1) = 0.0
