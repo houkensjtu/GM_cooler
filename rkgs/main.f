@@ -23,7 +23,7 @@
       prmt(4) = 0.01d0
       
 !     Should not forget to set the initial value of y.
-      y(1) = 0.0
+      y(1) = 0.0d0
 
 !     Ony one equation here, so ndim=1.
       ndim = 1
@@ -31,7 +31,7 @@
 
 !     Initial value of dery(i) is used as a weight factor for each equation.
 !     While this value will be replaced by the value of y'(x) during rkgs.
-      dery(1) = 1.0
+      dery(1) = 1.0d0
       
       call rkgs(prmt, y, dery, ndim, ihlf, aux)
       end program
