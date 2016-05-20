@@ -9,6 +9,10 @@
 	double precision y, dery, prmt, x
 	DIMENSION Y(3), DERY(3), PRMT(8)
 
+!       The original version of Prof. Matsubara does not calculate
+!       valve opening here. It may cause slight difference in result.
+	call valve(x, prmt)
+
 	V2=0.5*VT*(1.0-COS(OMEGA*X-PHAI))
 	V1=VT-V2
 	P1=(C1+Y(1)-Y(2)-Y(3))*R/(VRH/TRH+V1/TH)

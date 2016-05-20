@@ -8,3 +8,4 @@ clean:
 	rm -f *.o *.mod
 	rm -f GM.txt
 	rm -f GMout.txt
+	rm -f *~
