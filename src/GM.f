@@ -31,12 +31,21 @@
 	call parSetting(y, dery, prmt, ndim)
 
 	CALL RKGS(PRMT,Y,DERY,NDIM,IHLF,AUX)
+
+!       Writing out data to GM.txt
 	JJ = log_step
 !	Old F77 style line continuation.
 	WRITE(9,101)'Deg.','Ve','P1','P2','dmr/dt','dm1/dt','dm2/dt','Cv1'
 !	Note that the second line should start from behind the "WRITE".
      +              ,'Cv2','Pos','P1-P2'
 101	FORMAT(11A12)
+!	JD=100
+	DO J=1,JJ,JD
+	K=360.0*J/JJ
+	DP=D(2,J)-D(3,J)
+	WRITE(9,100)K,(D(I,J),I=1,9),DP
+	END DO
+100	FORMAT(I12,10F12.3)
 
 !       Below is the output part.
 	AMR=0.
