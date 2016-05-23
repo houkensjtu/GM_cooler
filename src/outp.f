@@ -13,7 +13,7 @@
 !     Valve timing information is needed here because otherwise
 !     the opening data being written below will be strange.
       call valve(x, prmt)
-
+!      IF(x.ge.0) then
       IF(X.GE.PRMT(7)) THEN
          log_step = log_step + 1
          D(1,log_step)=V2
@@ -40,7 +40,14 @@
          D(8,log_step)=CV(2)/21.2
 
 !     Place holder for displacer calculation.
+!         if( Y(4).ge.0.02D0 ) then
+!             y(4) = 0.02D0
+!         else if (y(4).le.-0.02D0) then
+!             y(4) = -0.02D0
+!         end if
          D(9,log_step)=Y(4)
+
+         D(10,log_step)=pa
 
       ENDIF
 

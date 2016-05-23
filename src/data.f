@@ -22,8 +22,11 @@
       integer nx, nf, n
       integer log_step
 
-      dimension d(10,6000), xx(8), cv(3)
+      dimension d(10,60000), xx(8), cv(3)
       double precision am0, amemax
-      
+
+!     Assist pressure.
+      double precision pa
+
       end module data
 
