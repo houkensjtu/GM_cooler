@@ -20,48 +20,15 @@
 	OPEN(3,FILE='IN.TXT')
 	READ(3,*)VRD,VT,PH,PL,F,FIE
 	READ(3,*)B1,B2,B3,MODE
-
-	CV(1)=B1*21.2
-	CV(2)=B2*21.2
-	CV(3)=B3
 	READ(3,*)X1,X2,X3,X4
 	READ(3,*)PRMT(2),PRMT(3)
-	PRMT(1)=0.0
-	PRMT(4)=0.0001
 	READ(3,*)R,TH,TE
 !       PHAI0 : Delay angle
 !       JD    : Data pitch
 	READ(3,*)PHAI0,JD
-	PI=3.141592
-	OMEGA=2.0*PI*F
-	PHAI=PHAI0*PI/180.0
-	CP=5.2
-	TR=0.5*(TH+TE)
-	P0=0.5*(PH+PL)
-        TRH=(3.0*TH+TE)/4.0
-	TRE=(3.0*TE+TH)/4.0
-	VRH=0.5*VRD
-	VRE=0.5*VRD
-	PM=(PH+PL)/2.0
-	V20=0.5*VT*(1.0-COS(-PHAI))
-	V10=VT-V20
-	C1=PL/R*(VRH/TRH+V10/TH)
-	C2=PL/R*(VRE/TRE+V20/TE)
-	CV10=CV(1)
-	CV20=CV(2)
-	XX(1)=X1/F/360.
-	XX(2)=X2/F/360.
-	XX(3)=X3/F/360.
-	XX(4)=X4/F/360.
-	PRMT(7)=PRMT(2)-1./F
-!       R=2.077,(for He [MPa,cm3/g/K])
-	Y(1)=0.0
-	Y(2)=0.0
-	Y(3)=0.0
-	DERY(1)=0.3
-	DERY(2)=0.3
-	DERY(3)=0.4
-	NDIM=3
+
+!       Set global variables as parameters.
+	call parSetting(y, dery, prmt, ndim)
 
 	CALL RKGS(PRMT,Y,DERY,NDIM,IHLF,AUX)
 	JJ = log_step
