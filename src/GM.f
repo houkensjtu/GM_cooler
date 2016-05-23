@@ -12,7 +12,7 @@
 
 !       These variables are used by the Runge-Kutta subroutine.
 	double precision y, dery, prmt, aux, x
-	DIMENSION Y(3),DERY(3),AUX(8,3),PRMT(8)
+	DIMENSION Y(4),DERY(4),AUX(8,4),PRMT(8)
 	integer ndim, ihlf
 
 	OPEN(8,FILE='GMout.txt')
@@ -35,8 +35,8 @@
 !	Old F77 style line continuation.
 	WRITE(9,101)'Deg.','Ve','P1','P2','dmr/dt','dm1/dt','dm2/dt','Cv1'
 !	Note that the second line should start from behind the "WRITE".
-     +              ,'Cv2',' P1-P2'
-101	FORMAT(10A12)
+     +              ,'Cv2','Pos','P1-P2'
+101	FORMAT(11A12)
 
 !       Below is the output part.
 	AMR=0.
@@ -143,9 +143,9 @@ C--------------------------------------
 	DO J=1,JJ,JD
 	K=360.0*J/JJ
 	DP=D(2,J)-D(3,J)
-	WRITE(9,100)K,(D(I,J),I=1,8),DP
+	WRITE(9,100)K,(D(I,J),I=1,9),DP
 	END DO
-100	FORMAT(I12,9F12.3)
+100	FORMAT(I12,10F12.3)
 	END PROGRAM
 
 
