@@ -148,13 +148,6 @@ C--------------------------------------
 108	FORMAT(A,4F10.2)
 109	FORMAT(A,2F10.4) 
 
-!	JD=100
-	DO J=1,JJ,JD
-	K=360.0*J/JJ
-	DP=D(2,J)-D(3,J)
-	WRITE(9,100)K,(D(I,J),I=1,9),DP
-	END DO
-100	FORMAT(I12,10F12.3)
 	END PROGRAM
 
 

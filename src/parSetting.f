@@ -48,6 +48,6 @@
 
       DERY(4)=0.3D0
 
-      NDIM=3
+      NDIM=4
 
       end subroutine
