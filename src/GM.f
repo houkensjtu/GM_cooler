@@ -12,11 +12,12 @@
 
 !       These variables are used by the Runge-Kutta subroutine.
 	double precision y, dery, prmt, aux, x
-	DIMENSION Y(4),DERY(4),AUX(8,4),PRMT(8)
+	DIMENSION Y(5),DERY(5),AUX(8,5),PRMT(8)
 	integer ndim, ihlf
 
 	OPEN(8,FILE='GMout.txt')
-	OPEN(9,FILE='GM.txt')
+	OPEN(9,FILE='Pressure.txt')
+	OPEN(10,FILE='Flux.txt')
 	OPEN(3,FILE='IN.TXT')
 	READ(3,*)VRD,VT,PH,PL,F,FIE
 	READ(3,*)B1,B2,B3,MODE
@@ -35,17 +36,19 @@
 !       Writing out data to GM.txt
 	JJ = log_step
 !	Old F77 style line continuation.
-	WRITE(9,101)'Deg.','Ve','P1','P2','dmr/dt','dm1/dt','dm2/dt','Cv1'
-!	Note that the second line should start from behind the "WRITE".
-     +              ,'Cv2','Pos','Pa','P1-P2'
-101	FORMAT(12A12)
+	WRITE(9,101)  'Deg.','Ve','P1','P2','P1-P2','P_assist','Vel','Pos'
+	WRITE(10,101) 'Deg.','Ve','dmr/dt','dm1/dt','dm2/dt','Cv1',
+     +                'Cv2','Pos'
+
+101	FORMAT(8A12)
 !	JD=100
 	DO J=1,JJ,JD
 	K=360.0*J/JJ
 	DP=D(2,J)-D(3,J)
-	WRITE(9,100)K,(D(I,J),I=1,10),DP
+	WRITE(9,100)  K,D(1,J),D(2,J),D(3,J),DP,D(9,J),D(10,J),D(11,J)
+	WRITE(10,100) K,D(1,J),D(4,J),D(5,J),D(6,J),D(7,J),D(8,J),D(11,J)
 	END DO
-100	FORMAT(I12,11F12.3)
+100	FORMAT(I12,7F12.3)
 
 !       Below is the output part.
 	AMR=0.

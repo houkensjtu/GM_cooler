@@ -7,7 +7,7 @@
 	use data
 	implicit none
 	double precision y, dery, prmt, x
-	DIMENSION Y(4), dery(4), PRMT(8)
+	DIMENSION Y(5), dery(5), PRMT(8)
 
 	double precision pressureAssist
 
@@ -36,7 +36,7 @@
 !       Dummy space holder for future displaser calculation.
 !       The displacement velocity derived from summed force.
 	dery(4)=((pa-p1)*1000000*0.0007-50.0D0) / 1000.0
-
+	dery(5)=((pa-p1)*1000000*0.0007-50.0D0) / 1000.0
 !	If the displacer hit the limitation...
 	if (((y(4).gt.0.02D0).or.(y(4).lt.-0.02D0))) then
 !       If the velocity direction and displacement is the same,

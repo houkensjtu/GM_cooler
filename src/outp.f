@@ -7,7 +7,7 @@
       use data
       implicit none
       double precision y, dery, prmt, aux, x
-      DIMENSION Y(4),DERY(4),AUX(8,4),PRMT(8)
+      DIMENSION Y(5),DERY(5),AUX(8,5),PRMT(8)
       integer ndim, ihlf
 
 !     Valve timing information is needed here because otherwise
@@ -40,14 +40,14 @@
          D(8,log_step)=CV(2)/21.2
 
 !     Place holder for displacer calculation.
-!         if( Y(4).ge.0.02D0 ) then
-!             y(4) = 0.02D0
-!         else if (y(4).le.-0.02D0) then
-!             y(4) = -0.02D0
-!         end if
-         D(9,log_step)=Y(4)
+!     pa is the pressure of assist room.
+         D(9,log_step)=pa
 
-         D(10,log_step)=pa
+!     Velocity of displacer.
+         D(10,log_step)=y(4)
+
+!     Position of displacer.
+         D(11,log_step)=y(5)
 
       ENDIF
 

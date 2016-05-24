@@ -8,7 +8,7 @@
       double precision a, b, c, xend, h, aj, bj, cj, r1, r2, delt
       integer irec, istep, itest, imod, iend, i, j, ndim, ihlf
       double precision y, dery, aux, prmt, x
-      DIMENSION Y(4),DERY(4),AUX(8,4),A(4),B(4),C(4),PRMT(8)
+      DIMENSION Y(5),DERY(5),AUX(8,5),A(4),B(4),C(4),PRMT(8)
 
       DO 1 I=1,NDIM
     1 AUX(8,I)=.06666667*DERY(I)

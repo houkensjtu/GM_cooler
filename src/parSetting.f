@@ -5,7 +5,7 @@
 
 !     These variables are used by the Runge-Kutta subroutine.
       double precision y, dery, prmt
-      DIMENSION Y(4),DERY(4),PRMT(8)
+      DIMENSION Y(5),DERY(5),PRMT(8)
       integer ndim
 
       CV(1)=B1*21.2
@@ -36,18 +36,20 @@
       XX(4)=X4/F/360.
       PRMT(7)=PRMT(2)-1./F
 !     R=2.077,(for He [MPa,cm3/g/K])
+
+!     Intial condition:
       Y(1)=0.0D0
       Y(2)=0.0D0
       Y(3)=0.0D0
-
       Y(4)=0.0D0
+      Y(5)=0.0d0
 
       DERY(1)=0.3D0
       DERY(2)=0.2D0
       DERY(3)=0.2D0
+      DERY(4)=0.15D0
+      Dery(5)=0.15d0
 
-      DERY(4)=0.3D0
-
-      NDIM=4
+      NDIM=5
 
       end subroutine
