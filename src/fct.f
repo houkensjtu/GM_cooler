@@ -35,10 +35,13 @@
 
 !       Dummy space holder for future displaser calculation.
 !       The displacement velocity derived from summed force.
-	dery(4)=((pa-p1)*1000000*0.0007-50.0D0) / 1000.0
-	dery(5)=((pa-p1)*1000000*0.0007-50.0D0) / 1000.0
+!       y(4) - position
+!       y(5) = dery(4) - velocity
+	dery(4)=y(5)
+	dery(5)=((pa-p1)*1000000*0.0007) / 10.0 -
+     +  2000.0/10.0*y(5)
 !	If the displacer hit the limitation...
-	if (((y(4).gt.0.02D0).or.(y(4).lt.-0.02D0))) then
+	if (((y(4).ge.0.02D0).or.(y(4).le.-0.02D0))) then
 !       If the velocity direction and displacement is the same,
 !       Then it should be stopped.
 	   if (y(4)*dery(4).gt.0.0D0) then

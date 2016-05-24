@@ -43,11 +43,11 @@
 !     pa is the pressure of assist room.
          D(9,log_step)=pa
 
-!     Velocity of displacer.
+!     Position of displacer.
          D(10,log_step)=y(4)
 
-!     Position of displacer.
-         D(11,log_step)=y(5)
+!     Velocity of displacer.
+         D(11,log_step)=dery(4)
 
       ENDIF
 

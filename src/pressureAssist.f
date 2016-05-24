@@ -5,7 +5,7 @@
       double precision pressureAssist
       double precision x, f
 
-      if (mod(x, 1.0D0/f).gt.(0.5D0/f)) then
+      if (mod(x, 1.0D0/f).gt.(0.4D0/f)) then
           pressureAssist = PH
       else 
           pressureAssist = PL

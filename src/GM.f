@@ -36,7 +36,7 @@
 !       Writing out data to GM.txt
 	JJ = log_step
 !	Old F77 style line continuation.
-	WRITE(9,101)  'Deg.','Ve','P1','P2','P1-P2','P_assist','Vel','Pos'
+	WRITE(9,101)  'Deg.','Ve','P1','P2','P1-P2','P_assist','Pos','Vel'
 	WRITE(10,101) 'Deg.','Ve','dmr/dt','dm1/dt','dm2/dt','Cv1',
      +                'Cv2','Pos'
 
@@ -46,7 +46,7 @@
 	K=360.0*J/JJ
 	DP=D(2,J)-D(3,J)
 	WRITE(9,100)  K,D(1,J),D(2,J),D(3,J),DP,D(9,J),D(10,J),D(11,J)
-	WRITE(10,100) K,D(1,J),D(4,J),D(5,J),D(6,J),D(7,J),D(8,J),D(11,J)
+	WRITE(10,100) K,D(1,J),D(4,J),D(5,J),D(6,J),D(7,J),D(8,J),D(10,J)
 	END DO
 100	FORMAT(I12,7F12.3)
 
