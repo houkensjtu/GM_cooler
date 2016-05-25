@@ -48,7 +48,7 @@
 	WRITE(9,100)  K,D(1,J),D(2,J),D(3,J),DP,D(9,J),D(10,J),D(11,J)
 	WRITE(10,100) K,D(1,J),D(4,J),D(5,J),D(6,J),D(7,J),D(8,J),D(10,J)
 	END DO
-100	FORMAT(I12,7F12.3)
+100	FORMAT(I12,7F12.5)
 
 !       Below is the output part.
 	AMR=0.
