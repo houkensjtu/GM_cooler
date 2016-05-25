@@ -22,7 +22,7 @@
       integer nx, nf, n
       integer log_step
 
-      dimension d(12,60000), xx(8), cv(3)
+      dimension d(12,100000), xx(8), cv(3)
       double precision am0, amemax
 
 !     Assist pressure.
