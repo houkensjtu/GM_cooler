@@ -42,8 +42,8 @@
 !	It's important to allow reverse flow acrocc the valve.
 !	Otherwise pressure overshooting (ex. Pressure over the PH)
 !	could occur.
-        PPX1=SIGN(1.0,PP1)*SQRT(ABS(PP1))
-        PPX2=SIGN(1.0,PP2)*SQRT(ABS(PP2))
+        PPX1=SIGN(1.0D0,PP1)*SQRT(ABS(PP1))
+        PPX2=SIGN(1.0D0,PP2)*SQRT(ABS(PP2))
 
 	DERY(1)=CV(1)*PPX1
 	DERY(2)=CV(2)*PPX2
