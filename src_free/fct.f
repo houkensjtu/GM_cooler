@@ -38,10 +38,13 @@
 	P2=(C2+Y(3))*R/(VRE/TRE+V2/TE)
 	PP1=PH*PH-P1*P1
 	PP2=P1*P1-PL*PL
-!       PPX1=SIGN(1.0,PP1)*SQRT(ABS(PP1))
-!       PPX2=SIGN(1.0,PP2)*SQRT(ABS(PP2))
-	PPX1=SQRT(ABS(PP1))
-	PPX2=SQRT(ABS(PP2))
+
+!	It's important to allow reverse flow acrocc the valve.
+!	Otherwise pressure overshooting (ex. Pressure over the PH)
+!	could occur.
+        PPX1=SIGN(1.0,PP1)*SQRT(ABS(PP1))
+        PPX2=SIGN(1.0,PP2)*SQRT(ABS(PP2))
+
 	DERY(1)=CV(1)*PPX1
 	DERY(2)=CV(2)*PPX2
 !       DERY(3)=CV(3)*(P1*P1-P2*P2)
