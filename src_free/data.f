@@ -8,7 +8,10 @@
       double precision XT
       
       double precision vrd, f, fie, b1, b2, b3
-      double precision x1, x2, x3, x4, phai0, pi, cp, tr, pm
+
+!     8 timing parameter used to form a Trapezoid shape opening
+      double precision x1, x2, x3, x4, x5, x6, x7, x8
+      double precision phai0, pi, cp, tr, pm
       double precision v20, v10
       
       double precision amr, ame, fm1, fm2, wf0, wf1, wu1, wf2, wf10
@@ -16,7 +19,8 @@
       double precision caract, carnot, cmax, cmax2, dp
 
       double precision pp1, pp2, ppx1, ppx2, p0
-      double precision ff, xk1, xk2, xk3, xk4, c, s, b
+      double precision ff, xk1, xk2, xk3, xk4, xk5, xk6, xk7, xk8
+      double precision c, s, b
 
       integer j, mode, jd, jj, k, i
       integer nx, nf, n

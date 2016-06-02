@@ -12,7 +12,12 @@
 
 !     Valve timing information is needed here because otherwise
 !     the opening data being written below will be strange.
-      call valve(x, prmt)
+
+!     valve() is the original version (Triangle opening)
+!     valveTrapezoid is the new trapezoid shape opening
+!     call valve(x, prmt)
+      call valveTrapezoid(x, prmt)
+
 !      IF(x.ge.0) then
       IF(X.GE.PRMT(7)) THEN
          log_step = log_step + 1

@@ -13,8 +13,12 @@
 	double precision area
 !       The original version of Prof. Matsubara does not calculate
 !       valve opening here. It may cause slight difference in result.
-	call valve(x, prmt)
-	
+
+!       valve() is the original version (Triangle opening)
+!       valveTrapezoid is the new trapezoid shape opening
+!	call valve(x, prmt)
+	call valveTrapezoid(x, prmt)
+
 !       Pressure in assist room is calculated by a function.
 	pa = pressureAssist(x,f)
 

@@ -21,7 +21,9 @@
 	OPEN(3,FILE='IN.TXT')
 	READ(3,*)VRD,VT,PH,PL,F,FIE
 	READ(3,*)B1,B2,B3,MODE
-	READ(3,*)X1,X2,X3,X4
+!       Add additional angle parameter in order to
+!       enable trapezoid shape opening.
+	READ(3,*)X1,X2,X3,X4,x5,x6,x7,x8
 	READ(3,*)PRMT(2),PRMT(3)
 	READ(3,*)R,TH,TE
 !       PHAI0 : Delay angle
