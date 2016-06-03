@@ -65,7 +65,7 @@
 !       Mass - kg
 !       Displacement - m
 	dery(5)=((pa-p1)*1000000*0.0007D0) / 20.0 -
-     +  200.0 / 20.0*y(5)
+     +  3000.0 / 20.0*y(5)
 !	If the displacer hit the limitation...
 	if (((y(4).ge.0.02D0).or.(y(4).le.-0.02D0))) then
 !       If the velocity direction and displacement is the same,

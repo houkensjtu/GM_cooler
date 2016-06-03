@@ -5,8 +5,8 @@
       double precision pressureAssist
       double precision x, f
 
-      if ( (mod(x, 1.0D0/f).gt.(0.2D0/f)) .and. 
-     + (mod(x,1.0d0/f).lt.(0.85d0/f))) then
+      if ( (mod(x, 1.0D0/f).gt.(0.1D0/f)) .and. 
+     + (mod(x,1.0d0/f).lt.(0.70d0/f))) then
           pressureAssist = PL
       else 
           pressureAssist = PH
