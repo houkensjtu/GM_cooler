@@ -19,11 +19,11 @@
 !     Add d0 following the number to avoid double precision error.
       prmt(1) = 0.0d0
       prmt(2) = 10.0d0
-      prmt(3) = 1.0d0
-      prmt(4) = 0.01d0
+      prmt(3) = 0.1d0
+      prmt(4) = 1.0d0
       
 !     Should not forget to set the initial value of y.
-      y(1) = 3.0d0
+      y(1) = 1.0d0
 
 !     Ony one equation here, so ndim=1.
       ndim = 1
@@ -47,11 +47,7 @@
       dimension dery(1),y(1)
       
 !     Calculate the y'(x) as you want.
-      if (x.le.3.00d0) then 
-      dery(1) =  1000.0d0
-      else
-      dery(1) =  0.0d0
-      end if
+      dery(1)=y(1)
       end subroutine
       
       
@@ -62,7 +58,7 @@
       integer ihlf, ndim
 
 !     Print the result as you want.
-      print *,x,y(1),dery(1)
+      print *,x,y(1),dery(1),exp(x)
 
       end subroutine
 
