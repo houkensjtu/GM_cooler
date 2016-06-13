@@ -35,7 +35,14 @@
 	write(*,*) '2.Gas driven ...........2'
 	write(*,*) '(ENTER only 1 or 2)'
 	write(*,*) 'Your choice .............'
-	read(*,*)  arg
+	read(*,*)  drive_mode
+
+	write(*,*) 'Select output mode from:'
+	write(*,*) '1.One cycle  ..........1'
+	write(*,*) '2.Whole series ........2'
+	write(*,*) '(ENTER only 1 or 2)'
+	write(*,*) 'Your choice ............'
+	read(*,*)  output_mode
 
 !       Set global variables as parameters.
 	call parSetting(y, dery, prmt, ndim)
@@ -52,12 +59,18 @@
 101	FORMAT(8A12)
 !	JD=100
 	DO J=1,JJ,JD
-	K=360.0*J/JJ
+	if (output_mode == '1') then
+	   K_float=360.0*J/JJ
+	else if (output_mode == '2') then
+	   K_float=PRMT(2)*float(J)/float(JJ)
+	end if
 	DP=D(2,J)-D(3,J)
-	WRITE(9,100)  K,D(1,J),D(2,J),D(3,J),DP,D(9,J),D(10,J),D(11,J)
-	WRITE(10,100) K,D(1,J),D(4,J),D(5,J),D(6,J),D(7,J),D(8,J),D(10,J)
+	WRITE(9,100)  K_float,D(1,J),D(2,J),D(3,J),DP,D(9,J),
+     &  D(10,J),D(11,J)
+	WRITE(10,100) K_float,D(1,J),D(4,J),D(5,J),D(6,J),
+     &  D(7,J),D(8,J),D(10,J)
 	END DO
-100	FORMAT(I12,7F12.5)
+100	FORMAT(F12.5,7F12.5)
 
 	call system('gnuplot plot_disp.plt')
 

@@ -30,10 +30,10 @@
 !       V2 - Expansion room volume. (cm^3)
 !       A gas driven calculation: ( y(4)*100 means convert m -> cm )
 !       VT/4.0 because the current stroke is 40 mm, thus 4 cm.
-	if (arg=='1') then
+	if (drive_mode == '1') then
 	   V2=0.5*VT*(1.0-COS(OMEGA*X-PHAI))
 	   V1=VT-V2
-	else if (arg=='2') then
+	else if (drive_mode == '2') then
 	   Area = VT/4.0d0
 	   V2=0.5d0*VT - y(4)*100*Area
 	   V1=VT-V2

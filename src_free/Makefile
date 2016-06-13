@@ -9,4 +9,5 @@ clean:
 	rm -f Pressure.txt
 	rm -f Flux.txt
 	rm -f GMout.txt
+	rm -f *.png
 	rm -f *~

@@ -25,14 +25,14 @@
       integer j, mode, jd, jj, k, i
       integer nx, nf, n
       integer log_step
-
+      double precision k_float
       dimension d(12,100000), xx(8), cv(3)
       double precision am0, amemax
 
 !     Assist pressure.
       double precision pa
       
-      character(len=3) :: arg
-
+      character(len=3) :: drive_mode, output_mode
+      double precision output_timing
       end module data
 

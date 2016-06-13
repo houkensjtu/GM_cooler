@@ -18,8 +18,14 @@
 !     call valve(x, prmt)
       call valveTrapezoid(x, prmt)
 
-!      IF(x.ge.0) then
-      IF(X.GE.PRMT(7)) THEN
+      if (output_mode == '1') then
+         output_timing = prmt(7)
+      else if (output_mode == '2') then
+         output_timing = 0.0d0
+      end if
+
+      IF(x.ge.output_timing) then
+
          log_step = log_step + 1
 
 !     Expansion room volume
