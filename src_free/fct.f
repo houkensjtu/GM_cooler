@@ -73,7 +73,8 @@
 !       springCoef - Resist coefficient on position term.
 !       y'' = deltaP*A/m - veloResit/m * y'
 	dery(5)=((pa-p1)*1000000*0.0007D0) / displacerMass -
-     +  (dampCoef / displacerMass) * y(5) - springCoef*y(4)
+     +  (dampCoef / displacerMass) * y(5) - springCoef*y(4) +
+     +  9.80D0
 !	If the displacer hit the limitation...
 	if (((y(4).ge.0.02D0).or.(y(4).le.-0.02D0))) then
 !       If the velocity direction and displacement is the same,

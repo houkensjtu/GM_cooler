@@ -1,25 +1,21 @@
-#set terminal dumb
-#plot 'Pressure.txt' u 1:2 title 'Expansion room volume.(cm^3)'
-#plot 'Pressure.txt' u 1:3 title 'Expansion room pressure.(MPa)'
-
 set grid xtics ytics
-set yrange [0.6:2.5]
-plot "Pressure50.txt" u 1:3  w l lw 1.5 title 'Regenerator flow coef. = 50',\
-     "Pressure100.txt" u 1:3  w l lw 1.5 title 'Regenerator flow coef. = 100',\
-     "Pressure200.txt" u 1:3  w l lw 1.5 title 'Regenerator flow coef. = 200',\
-     "Pressure400.txt" u 1:3  w l lw 1.5 title 'Regenerator flow coef. = 400',\
-     "Pressure800.txt" u 1:3  w l lw 1.5 title 'Regenerator flow coef. = 800'
-set terminal png font "/home/bao/fonts_bao/Fonts/arial.ttf" 25 size 800,600
-set output "Pressure.png"
+set yrange [0.6:2.8]
+plot "Pressure0.txt" u 1:3  w l lw 1.5 title 'Spring constant = 0',\
+     "Pressure100.txt" u 1:3  w l lw 1.5 title 'Spring constant = 100',\
+     "Pressure200.txt" u 1:3  w l lw 1.5 title 'Spring constant = 200',\
+     "Pressure400.txt" u 1:3  w l lw 1.5 title 'Spring constant = 400',\
+     "Pressure800.txt" u 1:3  w l lw 1.5 title 'Spring constant = 800'
+set terminal postscript eps color enhanced "Arial" 25
+set output "Pressure_group.eps"
 replot
 
 set grid xtics ytics
-set autoscale y
-plot "Pressure50.txt" u 1:2  w l lw 1.5 title 'Regenerator flow coef. = 50',\
-     "Pressure100.txt" u 1:2  w l lw 1.5 title 'Regenerator flow coef. = 100',\
-     "Pressure200.txt" u 1:2  w l lw 1.5 title 'Regenerator flow coef. = 200',\
-     "Pressure400.txt" u 1:2  w l lw 1.5 title 'Regenerator flow coef. = 400',\
-     "Pressure800.txt" u 1:2  w l lw 1.5 title 'Regenerator flow coef. = 800'
-set terminal png font "/home/bao/fonts_bao/Fonts/arial.ttf" 25 size 800,600
-set output "Volume.png"
+set yrange [0:700]
+plot "Pressure0.txt" u 1:2  w l lw 1.5 title 'Spring constant = 0',\
+     "Pressure100.txt" u 1:2  w l lw 1.5 title 'Spring constant = 100',\
+     "Pressure200.txt" u 1:2  w l lw 1.5 title 'Spring constant = 200',\
+     "Pressure400.txt" u 1:2  w l lw 1.5 title 'Spring constant = 400',\
+     "Pressure800.txt" u 1:2  w l lw 1.5 title 'Spring constant = 800'
+set terminal postscript eps color enhanced "Arial" 25
+set output "Volume_group.eps"
 replot
