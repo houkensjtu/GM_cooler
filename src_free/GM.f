@@ -44,9 +44,9 @@
 	write(*,*) 'Your choice ............'
 	read(*,*)  output_mode
 
-	write(*,*) 'Input displacerMass ,veloResist and regFlowCoef:'
+	write(*,*) 'Input displacerMass ,Resist coef. and regFlowCoef:'
 	write(*,*) '(default mass: 20 kg)'
-	Write(*,*) '(default resist: 3000, 0)'
+	Write(*,*) '(default resist(damp, spring): 3000, 0)'
 	write(*,*) '(default regFlowCoef: 200)'
 	write(*,*) '* Inlet and outlet valve is set in IN.TXT.'
 	write(*,*) 'Your choice ............'
