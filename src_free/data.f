@@ -7,7 +7,7 @@
       double precision VT,VRH,VRE,C1,C2,CV10,CV20,PHAI,V1,V2,OMEGA
       double precision XT
       
-      double precision vrd, f, fie, b1, b2, b3
+      double precision vrd, f, fie, b1, b2, regFlowCoef
 
 !     8 timing parameter used to form a Trapezoid shape opening
       double precision x1, x2, x3, x4, x5, x6, x7, x8
@@ -34,5 +34,6 @@
       
       character(len=3) :: drive_mode, output_mode
       double precision output_timing
-      end module data
 
+      double precision displacerMass, dampCoef, springCoef
+      end module data

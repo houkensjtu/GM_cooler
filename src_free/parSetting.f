@@ -10,7 +10,7 @@
 
       CV(1)=B1*21.2
       CV(2)=B2*21.2
-      CV(3)=B3
+      CV(3)=regFlowCoef
       PRMT(1)=0.0
       PRMT(4)=0.0001
       PI=3.141592

@@ -20,7 +20,7 @@
 	OPEN(10,FILE='Flux.txt')
 	OPEN(3,FILE='IN.TXT')
 	READ(3,*)VRD,VT,PH,PL,F,FIE
-	READ(3,*)B1,B2,B3,MODE
+	READ(3,*)B1,B2,MODE
 !       Add additional angle parameter in order to
 !       enable trapezoid shape opening.
 	READ(3,*)X1,X2,X3,X4,x5,x6,x7,x8
@@ -43,6 +43,14 @@
 	write(*,*) '(ENTER only 1 or 2)'
 	write(*,*) 'Your choice ............'
 	read(*,*)  output_mode
+
+	write(*,*) 'Input displacerMass ,veloResist and regFlowCoef:'
+	write(*,*) '(default mass: 20 kg)'
+	Write(*,*) '(default resist: 3000, 0)'
+	write(*,*) '(default regFlowCoef: 200)'
+	write(*,*) '* Inlet and outlet valve is set in IN.TXT.'
+	write(*,*) 'Your choice ............'
+	read(*,*)  displacerMass, dampCoef, springCoef, regFlowCoef
 
 !       Set global variables as parameters.
 	call parSetting(y, dery, prmt, ndim)

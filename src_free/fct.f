@@ -11,6 +11,7 @@
 
 	double precision pressureAssist
 	double precision area
+
 !       The original version of Prof. Matsubara does not calculate
 !       valve opening here. It may cause slight difference in result.
 
@@ -51,6 +52,8 @@
 
 	DERY(1)=CV(1)*PPX1
 	DERY(2)=CV(2)*PPX2
+
+!       DERY(3) - dm / dt - mass flow through regenerator
 !       DERY(3)=CV(3)*(P1*P1-P2*P2)
 	DERY(3)=CV(3)*(P1-P2)
 
@@ -64,8 +67,13 @@
 !       Area - m^2
 !       Mass - kg
 !       Displacement - m
-	dery(5)=((pa-p1)*1000000*0.0007D0) / 20.0 -
-     +  3000.0 / 20.0*y(5)
+
+!       displacerMass - kg
+!       dampCoef - Resist coefficient on velocity term.
+!       springCoef - Resist coefficient on position term.
+!       y'' = deltaP*A/m - veloResit/m * y'
+	dery(5)=((pa-p1)*1000000*0.0007D0) / displacerMass -
+     +  (dampCoef / displacerMass) * y(5) - springCoef*y(4)
 !	If the displacer hit the limitation...
 	if (((y(4).ge.0.02D0).or.(y(4).le.-0.02D0))) then
 !       If the velocity direction and displacement is the same,
