@@ -4,9 +4,9 @@ A simulation program for single-stage GM type cryocooler. Originally created by 
 
 ## Directory description
 ```
-├──rkgs/         : A test program to verify the RKGS (Runge-Kutta Method) subroutine.
-├──src_origin/   : Original source code written by Y. Matsubara.
-├──src/          : Refactored code based on the original source code.
+rkgs/         : A test program to verify the RKGS (Runge-Kutta Method) subroutine.
+src_origin/   : Original source code written by Y. Matsubara.
+src/          : Refactored code based on the original source code.
 ```
 ## How-to compile
 
@@ -26,32 +26,3 @@ Linux 3.10.0-327.el7.x86_64 GNU/Linux
 
 GNU Fortran (GCC) 4.8.5 20150623 (Red Hat 4.8.5-4)
 ```
-
-## Typical results
-
-  2.2 +-+------+-------+--------+--------+-------+--------+-------+------+-+
-      +     AAAAAAAAAAAAAAAAAAAA+        +       +        +       +        +
-    2 +-+   A                  AAAAA Expansion room pressure.(MPa)    A  +-+
-      |     A                      AAA                                     |
-      |    AA                        AAA                                   |
-  1.8 +-+  A                           A                                 +-+
-      |    A                           AA                                  |
-  1.6 +-+ AA                            AA                               +-+
-      |   A                              A                                 |
-      |   A                               A                                |
-  1.4 +-+ A                               A                              +-+
-      |  AA                                A                               |
-  1.2 +-+A                                 A                             +-+
-      |  A                                 AA                              |
-    1 +-AA                                  AA                           +-+
-      | A                                    A                             |
-      AAA                                    AA                            |
-  0.8 A-+                                     AA                AAAAA    +-+
-      +        +       +        +        +     AAAAAAAAAAAAAAAAAA +        +
-  0.6 +-+------+-------+--------+--------+-------+--------+-------+------+-+
-      0        50     100      150      200     250      300     350      400
-
- m,We(J/s),,Q=    10.256   560.399   558.459   441.127
- WB1,WB2,Wr,Wu1=     600.93432    1439.34698      17.33941     727.36099
- FM1,2=    5.2626    5.2613
- %Carnot=     18.51     33.66     42.61     98.20
