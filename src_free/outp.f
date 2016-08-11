@@ -31,10 +31,10 @@
 !     Expansion room volume
          D(1,log_step)=V2
 
-!     Pressure
+!     Compression room pressure.
          D(2,log_step)=P1
 
-!     Pressure
+!     Expansion room pressure.
          D(3,log_step)=P2
 
 !     mass flow rate at regenerator

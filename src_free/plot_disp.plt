@@ -1,6 +1,6 @@
 set terminal dumb
 plot 'Pressure.txt' u 1:2 title 'Expansion room volume.(cm^3)'
-plot 'Pressure.txt' u 1:3 title 'Expansion room pressure.(MPa)'
+plot 'Pressure.txt' u 1:4 title 'Expansion room pressure.(MPa)'
 
 # Eps format is prefered
 set terminal postscript eps color enhanced "Arial" 25
@@ -27,10 +27,28 @@ set yrange [0.6:2.5]
 # Reset the grid setting.
 unset grid
 set grid xtics ytics
-plot "Pressure.txt" u 1:3  w l lw 1.5 title 'Expansion room pressure.(MPa)'
+plot "Pressure.txt" u 1:4  w l lw 1.5 title 'Expansion room pressure.(MPa)',\
+     "Pressure.txt" u 1:3  w l lw 1.5 title 'Compression room pressure.(MPa)',\
+     "Pressure.txt" u 1:5  w l lw 1.5 title 'Pressure difference.(MPa)'
 
 set terminal png font "/home/bao/fonts_bao/Fonts/arial.ttf" 25 size 800,600
 set output "Pressure.png"
+replot
+
+set output
+
+set terminal postscript eps color enhanced "Arial" 25
+set output "Pdrop.eps"
+set xtics 60
+set ytics 0.1
+set yrange [-0.5:0.5]
+# Reset the grid setting.
+unset grid
+set grid xtics ytics
+plot "Pressure.txt" u 1:5  w l lw 1.5 title 'Pressure difference.(MPa)'
+
+set terminal png font "/home/bao/fonts_bao/Fonts/arial.ttf" 25 size 800,600
+set output "P_drop.png"
 replot
 
 set output

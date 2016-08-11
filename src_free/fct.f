@@ -36,6 +36,8 @@
 	   V1=VT-V2
 	else if (drive_mode == '2') then
 	   Area = VT/4.0d0
+!	One can add dead volume to V2, which will offset the volume
+!	curve. But the final result won't change much.
 	   V2=0.5d0*VT - y(4)*100*Area
 	   V1=VT-V2
 	end if
@@ -44,12 +46,14 @@
 	PP1=PH*PH-P1*P1
 	PP2=P1*P1-PL*PL
 
-!	It's important to allow reverse flow acrocc the valve.
+!	It's important to allow reverse flow across the valve.
 !	Otherwise pressure overshooting (ex. Pressure over the PH)
-!	could occur.
+!	might occur.
         PPX1=SIGN(1.0D0,PP1)*SQRT(ABS(PP1))
         PPX2=SIGN(1.0D0,PP2)*SQRT(ABS(PP2))
 
+!       DERY(1) -  dm1 / dt - mass flow through rotary valve (High Pressure).
+!       DERY(2) -  dm2 / dt - mass flow through rotary valve (Low Pressure).
 	DERY(1)=CV(1)*PPX1
 	DERY(2)=CV(2)*PPX2
 
@@ -71,10 +75,18 @@
 !       displacerMass - kg
 !       dampCoef - Resist coefficient on velocity term.
 !       springCoef - Resist coefficient on position term.
-!       y'' = deltaP*A/m - veloResit/m * y'
-	dery(5)=((pa-p1)*1000000*0.0007D0) / displacerMass -
-     +  (dampCoef / displacerMass) * y(5) - springCoef*y(4) +
+!       y'' = deltaP*A/m - veloResit/m * y' + g
+!       
+!       Scotch-yoke cross area: 0.25 * 3.14 * 0.045^2 = 1.589e-3
+!	However, note that in previous exp, the 45mm was used
+!	to drive 2 displacers, instead of 1.
+!	So the velocity result here will be significantly higher
+!	since only one displacer.
+
+	dery(5)=((pa-p1)*1000000*0.00159D0) / displacerMass -
+     +  (dampCoef / displacerMass) * y(5) - springCoef * y(4) +
      +  9.80D0
+
 !	If the displacer hit the limitation...
 	if (((y(4).ge.0.02D0).or.(y(4).le.-0.02D0))) then
 !       If the velocity direction and displacement is the same,
